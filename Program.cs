@@ -9,8 +9,8 @@ namespace JsonStructureCopy
     public static void Main(string[] args)
     {
       // On récupère les deux fichiers JSON
-      var source = string.Empty;
-      using (var reader = new StreamReader($"{args[0]}"))
+      string source = string.Empty;
+      using (StreamReader reader = new($"{args[0]}"))
       {
         source = reader.ReadToEnd();
       }
@@ -22,8 +22,8 @@ namespace JsonStructureCopy
       }
 
       // On les parse
-      var jsonSource = JObject.Parse(source);
-      var jsonTarget = JObject.Parse(target);
+      JObject jsonSource = JObject.Parse(source);
+      JObject jsonTarget = JObject.Parse(target);
 
       MergeJsonProperties(jsonSource, jsonTarget);
 
@@ -43,14 +43,14 @@ namespace JsonStructureCopy
     public static void MergeJsonProperties(JObject source, JObject target)
     {
       // on convertit les propriétés des JSON en listes sur lesquelles on peut itérer
-      var sourceProperties = source.Properties().ToList();
-      var targetProperties = target.Properties().ToList();
+      List<JProperty> sourceProperties = source.Properties().ToList();
+      List<JProperty> targetProperties = target.Properties().ToList();
 
       // Ajout des propriétés de la source qui ne sont pas dans le target
-      foreach (var sourceProp in sourceProperties)
+      foreach (JProperty sourceProp in sourceProperties)
       {
         // on cherche dans le target si la propriété existe
-        var targetProp = targetProperties.FirstOrDefault(p => p.Name == sourceProp.Name);
+        JProperty? targetProp = targetProperties.FirstOrDefault(p => p.Name == sourceProp.Name);
 
         // Si on l'a pas trouvée, on l'ajoute
         if (targetProp == null)
