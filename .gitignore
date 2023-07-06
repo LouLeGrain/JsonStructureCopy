@@ -1,0 +1,8 @@
+.vs/
+bin/
+obj/
+
+# Ça c'est mes fichiers de traduction angular 
+en-US.json
+fr-FR.json
+result.json

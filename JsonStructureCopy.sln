@@ -1,0 +1,30 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 25.0.1704.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "JsonStructureCopy", "JsonStructureCopy.csproj", "{5C5718FC-9050-46B4-B7BB-9AABA483D4FF}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "JsonStructureCopy", "JsonStructureCopy", "{1F1E1D38-CBA8-4D33-9395-300212413C1C}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5C5718FC-9050-46B4-B7BB-9AABA483D4FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5C5718FC-9050-46B4-B7BB-9AABA483D4FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5C5718FC-9050-46B4-B7BB-9AABA483D4FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5C5718FC-9050-46B4-B7BB-9AABA483D4FF}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {421C9CBB-D824-4CDB-BD18-2AEA2E12642A}
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{5C5718FC-9050-46B4-B7BB-9AABA483D4FF} = {1F1E1D38-CBA8-4D33-9395-300212413C1C}
+	EndGlobalSection
+EndGlobal
