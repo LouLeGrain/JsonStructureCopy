@@ -1,0 +1,7 @@
+{
+  "login" : {
+    "buttonLabel" : "Login",
+    "pwdField" : "Password",
+    "willBeRemoved": "willBeRemoved"
+  }
+}

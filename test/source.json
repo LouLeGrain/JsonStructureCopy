@@ -1,0 +1,7 @@
+{
+  "login" : {
+    "buttonLabel" : "Connexion",
+    "pwdField" : "Mot de passe",
+    "loginField" : "Login ou email"
+  }
+}

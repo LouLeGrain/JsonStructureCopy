@@ -8,28 +8,59 @@ namespace JsonStructureCopy
   {
     public static void Main(string[] args)
     {
-      // On récupère les deux fichiers JSON
-      string source = string.Empty;
-      using (StreamReader reader = new($"{args[0]}"))
-      {
-        source = reader.ReadToEnd();
-      }
+      try {
+        // Handling the two JSONs paths
+        string pathSource = String.Empty;
+        string pathTarget = String.Empty;
 
-      var target = string.Empty;
-      using (var reader = new StreamReader($"{args[1]}"))
-      {
-        target = reader.ReadToEnd();
-      }
+        // If the paths aren't provided as arguments, we ask the user
+        if (args.Length < 2){
+          Console.WriteLine("\nOops, missing JSON paths as arguments");
 
-      // On les parse
-      JObject jsonSource = JObject.Parse(source);
-      JObject jsonTarget = JObject.Parse(target);
+          Console.WriteLine("\nEnter the JSON source file path\n");
+          pathSource = Console.ReadLine();
+          Console.WriteLine("\nEnter the JSON target file path\n");
+          pathTarget = Console.ReadLine();
+        } else {
+          pathSource = args[0];
+          pathTarget = args[1];
+        }
+        
+        // Now we read the JSON
+        string source = string.Empty;
+        Console.WriteLine("\nReading JSON files...");
+        using (StreamReader reader = new(pathSource!))
+        {
+          source = reader.ReadToEnd();
+        }
 
-      MergeJsonProperties(jsonSource, jsonTarget);
+        var target = string.Empty;
+        using (var reader = new StreamReader(pathTarget!))
+        {
+          target = reader.ReadToEnd();
+        }
+        Console.WriteLine("\nDone\n");
 
-      using (var writer = new StreamWriter(@"result.json"))
-      {
-        writer.Write(jsonTarget.ToString());
+        // Then parsing
+        Console.WriteLine("\nParsing JSON files...");
+        JObject jsonSource = JObject.Parse(source);
+        JObject jsonTarget = JObject.Parse(target);
+        Console.WriteLine("\nDone\n");
+
+
+        
+        // And merging the properties
+        Console.WriteLine("Starting merging properties...\n");
+        
+        MergeJsonProperties(jsonSource, jsonTarget);
+
+        using (var writer = new StreamWriter(@"result.json"))
+        {
+          writer.Write(jsonTarget.ToString());
+        }
+        Console.WriteLine("\nDone ! See result.json");      
+      }catch(Exception e){
+        Console.WriteLine(e.Message);
       }
     }
 
@@ -55,6 +86,7 @@ namespace JsonStructureCopy
         // Si on l'a pas trouvée, on l'ajoute
         if (targetProp == null)
         {
+          Console.WriteLine(String.Format("Adding \"{0}\" : \"{1}\"", sourceProp.Name, sourceProp.Value));
           target.Add(sourceProp.Name, sourceProp.Value);
         }
         // Sinon si on l'a trouvée et que c'est un objet avec d'autres propriétés, on appelle cette même méthode sur cet objet
@@ -71,6 +103,7 @@ namespace JsonStructureCopy
       {
         if (!sourceProperties.Any(p => p.Name == targetProp.Name))
         {
+          Console.WriteLine(String.Format("Removing \"{0}\" : \"{1}\"", targetProp.Name, targetProp.Value));
           targetProp.Remove();
         }
       }

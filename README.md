@@ -9,6 +9,8 @@ In the command line:
 
 Creates a `result.json` file that contains the processing result.
 
+You can also run it without arguments, the program will then ask the paths for the two files.
+
 ## Details
 We take a Json file as a reference (let's call it `source.json`), and then we copy its structure into the second file (`target.json`).
 
@@ -18,7 +20,7 @@ We take a Json file as a reference (let's call it `source.json`), and then we co
 Here, we are only interested in properties containing primitive types (I tested only with strings, though).
 So, if a property in the source file itself contains a Json object, we recursively call the method on that object.
 
-I haven't thoroughly tested it, I just checked if the output file had the same number of lines and if we could find keys that weren't there before but are now.
+I haven't thoroughly tested it, but the results seems good so far.
 
 ## Example
 ### A French translation file
@@ -55,6 +57,7 @@ I haven't thoroughly tested it, I just checked if the output file had the same n
   }
 }
 ```
+These examples are included in the `test` folder to try it out
 
 ---
 <span style="font-size:2rem">🇫🇷</span>
@@ -67,7 +70,9 @@ A un moment il faut avoir les mêmes clés de traduction pour les autres langues
 En ligne de commande : 
 > `dotnet run -- source.json target.json`
 
-Créé un fichier `result.json` qui donne le résultat du traitement
+Créé un fichier `result.json` qui donne le résultat du traitement.
+
+Il est aussi possible de lancer le programme sans arguments, les deux chemins vers les fichiers json vous seront demandés.
 
 ## Détail
 On prend un fichier Json comme référence (appelons le `source.json`), puis on copie sa structure dans le deuxième fichier (`target.json`).
@@ -78,7 +83,7 @@ On prend un fichier Json comme référence (appelons le `source.json`), puis on 
 On s'intéresse ici qu'aux propriétés contenant des types primaires (j'ai testé qu'avec des string cependant).<br/>
 Donc si une propriété de la source contient elle même un objet Json, on appelle récursivement la méthode sur cet objet.<br/>
 
-J'ai pas testé consciencieusement, j'ai juste regardé si le fichier de sortie avait le même nombre de lignes et si on retrouvait bien des clés qui n'y étaient pas qui y sont désormais.
+J'ai pas testé consciencieusement, mais les résultats sont probants jusqu'ici.
 
 ## Exemple
 ### Un fichier de traduction en Français
@@ -115,3 +120,5 @@ J'ai pas testé consciencieusement, j'ai juste regardé si le fichier de sortie 
   }
 }
 ```
+
+Ces exemples sont inclus dans le dossier `test`
